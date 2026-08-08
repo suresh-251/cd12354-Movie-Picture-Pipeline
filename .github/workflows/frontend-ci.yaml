@@ -100,5 +100,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run tests
+        env:
+          CI: true
+        run: npm run test
+
       - name: Build application with Docker
         run: docker build --build-arg REACT_APP_MOVIE_API_URL=${REACT_APP_MOVIE_API_URL} -t mp-frontend-ci:${{ github.sha }} .
